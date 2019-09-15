@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {FlatList, Text, View} from 'react-native'
+import {FlatList, StyleSheet, Text, View} from 'react-native'
 import {connect} from '../../store'
+import DeputyItem from './DeputyItem'
 
 const DeputiesList = ({deputies}) => {
   const [page, setPage] = useState(0)
@@ -28,11 +29,13 @@ const DeputiesList = ({deputies}) => {
   })
 
   return (
-    <View>
+    <View style={styles.list}>
       {posts.length > 0 ? (
         <FlatList
           data={posts}
-          renderItem={({item}) => <Text>{item.name}</Text>}
+          renderItem={({item, index}) => (
+            <DeputyItem name={item.name} even={index % 2 === 0} />
+          )}
           keyExtractor={item => item.id}
           onEndReached={() => addPosts()}
           onEndThreshold={0.001}
@@ -43,5 +46,12 @@ const DeputiesList = ({deputies}) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+    width: '100%',
+  },
+})
 
 export default connect(({deputies}) => ({deputies}))(DeputiesList)
