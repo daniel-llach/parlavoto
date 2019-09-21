@@ -1,9 +1,11 @@
 import React from 'react'
 import {StyleSheet, Text, TouchableOpacity} from 'react-native'
 
-const DeputyItem = ({name, even}) => {
+const DeputyItem = ({id, name, even, navigateToDeputyVotes}) => {
   return (
-    <TouchableOpacity style={[styles.item, even ? styles.even : styles.odd]}>
+    <TouchableOpacity
+      style={[styles.item, even ? styles.even : styles.odd]}
+      onPress={() => navigateToDeputyVotes(id, name)}>
       <Text>{name}</Text>
     </TouchableOpacity>
   )

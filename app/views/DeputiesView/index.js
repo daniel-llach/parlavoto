@@ -17,10 +17,17 @@ class DeputiesView extends PureComponent {
     actions.getDeputies()
   }
 
+  navigateToDeputyVotes = (id, name) => {
+    console.log('go!')
+    const {navigation} = this.props
+    const {navigate} = navigation
+    navigate('DeputyVotes', {id: id, name: name})
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <DeputiesList />
+        <DeputiesList navigateToDeputyVotes={this.navigateToDeputyVotes} />
       </View>
     )
   }

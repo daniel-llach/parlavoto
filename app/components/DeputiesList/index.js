@@ -3,7 +3,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native'
 import {connect} from '../../store'
 import DeputyItem from './DeputyItem'
 
-const DeputiesList = ({deputies}) => {
+const DeputiesList = ({deputies, navigateToDeputyVotes}) => {
   const [page, setPage] = useState(0)
   const [posts, setPosts] = useState([])
 
@@ -34,14 +34,19 @@ const DeputiesList = ({deputies}) => {
         <FlatList
           data={posts}
           renderItem={({item, index}) => (
-            <DeputyItem name={item.name} even={index % 2 === 0} />
+            <DeputyItem
+              id={item.id}
+              name={item.name}
+              even={index % 2 === 0}
+              navigateToDeputyVotes={navigateToDeputyVotes}
+            />
           )}
           keyExtractor={item => item.id}
           onEndReached={() => addPosts()}
           onEndThreshold={0.001}
         />
       ) : (
-        <Text>Cargando...</Text>
+        <Text>Cargando listado de diputados vigentes...</Text>
       )}
     </View>
   )
