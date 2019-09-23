@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import Header from '../../components/Header'
+import DeputyVotingCard from '../../components/DeputyVotingCard'
 import {actions} from '../../store'
 
 class DeputyVotesView extends PureComponent {
@@ -18,9 +19,12 @@ class DeputyVotesView extends PureComponent {
   }
 
   render() {
+    const {navigation} = this.props
+    const {params} = navigation.state
+    const {name, id} = params
     return (
       <View style={styles.container}>
-        <Text>Lista de ultimas votaciones</Text>
+        <DeputyVotingCard name={name} id={id} />
       </View>
     )
   }
