@@ -19,7 +19,7 @@
     "react-navigation": "^4.0.0",
     "react-navigation-stack": "^1.5.1",
     "react-waterfall": "^4.0.4",
-    "xmldom": "^0.1.27"
+    "xmldom": "^0.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
